@@ -21,6 +21,7 @@ memoria.add_partition(20)
 memoria.add_partition(40)
 memoria.add_partition(10)
 memoria.add_partition(30)
+print("Essa eh a minha memoria particionada: ")
 print(memoria.partitionList)
 
 
