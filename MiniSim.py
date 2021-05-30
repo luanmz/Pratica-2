@@ -1,4 +1,4 @@
-class memory():
+class Memory():
     def __init__(self, size):
         self.partitionList = []
         self.partitionVaga = []
@@ -16,7 +16,7 @@ class memory():
             self.partitionList.append(tamanho)
             self.partitionVaga.append("Livre")
     
-    def BF(self, id, nome, procSize):
+    def bf(self, id, nome, procSize):
         if sum(self.partitionList) < self.size:
             raise ValueError("Memoria nao particionada completamente! Tente novamente")
         i = 0
@@ -39,14 +39,14 @@ class memory():
             
 
 #Aqui na instanciacao da memoria voce pode definir o seu tamanho.
-memoria = memory(100)
+memoria = Memory(100)
 memoria.add_partition(20)
 memoria.add_partition(40)
 memoria.add_partition(10)
 memoria.add_partition(30)
 print("\nEssa eh a minha memoria particionada: ")
 print(memoria.partitionList)
-memoria.BF(1, "processo 1", 30)
-memoria.BF(2, "processo 2", 25)
-memoria.BF(2, "Processo 3", 50)
+memoria.bf(1, "processo 1", 30)
+memoria.bf(2, "processo 2", 25)
+memoria.bf(2, "Processo 3", 50)
 print("\n", memoria.partitionVaga)
