@@ -20,6 +20,7 @@ class Memory():
         if sum(self.partitionList) < self.size:
             raise ValueError("Memoria nao particionada completamente! Tente novamente")
         i = 0
+        print(f"\n{nome} esta sendo alocado")
         intFrag = 999999999
         index = 0
         for x in self.partitionList:
@@ -28,13 +29,18 @@ class Memory():
                 index = i
             i += 1
         if intFrag == 999999999:
-            print(f"\n{nome} nao pode ser alocado")
+            print(f"\n{nome} nao pode ser alocado\n")
         elif self.partitionList[index] - procSize != 0:
             self.partitionVaga[index] = (id, nome , procSize)
-            print(f"\nHouve fragmentacao interna de {self.partitionList[index] - procSize} MBs para a particao {index + 1}")
+            print(f"\n{nome} foi alocado na particao {index + 1}\n")
+            print(f"\nHouve fragmentacao interna de {self.partitionList[index] - procSize} MBs para a particao {index + 1}\n")
         else:
-            self.partitionVaga[index] = (id, nome , procSize)
-            print(f"\nNao houve fragmentacao interna para a particao {index + 1}")
+            self.partitionVaga[index] = (id, nome , procSize) 
+            print(f"\n{nome} foi alocado na particao {index + 1}")
+            print(f"\nNao houve fragmentacao interna para a particao {index + 1}\n")
+           
+        print("Estado atual das minhas particoes: \n")
+        print(self.partitionVaga)
             
             
 
@@ -46,7 +52,6 @@ memoria.add_partition(10)
 memoria.add_partition(30)
 print("\nEssa eh a minha memoria particionada: ")
 print(memoria.partitionList)
-memoria.bf(1, "processo 1", 30)
+memoria.bf(1, "processo 1", 30) #best fit
 memoria.bf(2, "processo 2", 25)
 memoria.bf(2, "Processo 3", 50)
-print("\n", memoria.partitionVaga)
