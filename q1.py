@@ -18,11 +18,11 @@ class Memory():
             self.partitionVaga.append("Livre")
             
     #Algoritmo Best-fit que recebe o "processo"
-    def bf(self, id, nome, procSize): 
+    def bf(self, id, nome, procSize):
         if sum(self.partitionList) < self.size:
             
-            #Tratamento de erro caso a memória ainda não tenha sido particionada completamente 
-            raise ValueError("Memoria nao particionada completamente! Tente novamente") 
+            #Tratamento de erro caso a memória ainda não tenha sido particionada completamente
+            raise ValueError("Memoria nao particionada completamente! Tente novamente")
             
         i = 0
         print(f"\nBest Fit foi chamado para o processo {nome}")
