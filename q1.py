@@ -3,8 +3,9 @@ class Memory():
         self.partitionList = []
         self.partitionVaga = []
         self.size = size #In MB
-
-    def add_partition(self, tamanho):
+    
+    #função que adiciona uma partição
+    def add_partition(self, tamanho): 
         tamanhoTotal = sum(self.partitionList)
         if tamanhoTotal == self.size:
             print("memoria completamente particionada, nao pode adicionar mais uma particao")
@@ -15,11 +16,16 @@ class Memory():
         else:
             self.partitionList.append(tamanho)
             self.partitionVaga.append("Livre")
-    
-    def bf(self, id, nome, procSize):
+            
+    #Algoritmo Best-fit que recebe o "processo"
+    def bf(self, id, nome, procSize): 
         if sum(self.partitionList) < self.size:
-            raise ValueError("Memoria nao particionada completamente! Tente novamente")
+            
+            #Tratamento de erro caso a memória ainda não tenha sido particionada completamente 
+            raise ValueError("Memoria nao particionada completamente! Tente novamente") 
+            
         i = 0
+        print(f"\nBest Fit foi chamado para o processo {nome}")
         print(f"\n{nome} esta sendo alocado")
         intFrag = 999999999
         index = 0
@@ -44,14 +50,20 @@ class Memory():
             
             
 
-#Aqui na instanciacao da memoria voce pode definir o seu tamanho.
+#Aqui na instanciação da memória você pode definir o seu tamanho:
 memoria = Memory(100)
+
+#Aqui é onde se pode configurar a quantidade e tamanho de cada partição:
 memoria.add_partition(20)
 memoria.add_partition(40)
 memoria.add_partition(10)
 memoria.add_partition(30)
+
+#Aqui apenas mostramos como está particionada a memória (basicamente um log):
 print("\nEssa eh a minha memoria particionada: ")
 print(memoria.partitionList)
-memoria.bf(1, "processo 1", 30) #best fit
+
+#Aqui chamamos o best fit para cada processo:
+memoria.bf(1, "processo 1", 30) 
 memoria.bf(2, "processo 2", 25)
-memoria.bf(2, "Processo 3", 50)
+memoria.bf(3, "Processo 3", 50)
