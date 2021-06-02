@@ -36,10 +36,10 @@ class Memory():
             i += 1
         if intFrag == 999999999:
             print(f"\n{nome} nao pode ser alocado\n")
-        elif self.partitionList[index] - procSize != 0:
+        elif intFrag != 0:
             self.partitionVaga[index] = (id, nome , procSize)
             print(f"\n{nome} foi alocado na particao {index + 1}\n")
-            print(f"\nHouve fragmentacao interna de {self.partitionList[index] - procSize} MBs para a particao {index + 1}\n")
+            print(f"\nHouve fragmentacao interna de {intFrag} MBs para a particao {index + 1}\n")
         else:
             self.partitionVaga[index] = (id, nome , procSize) 
             print(f"\n{nome} foi alocado na particao {index + 1}")
@@ -64,6 +64,6 @@ print("\nEssa eh a minha memoria particionada: ")
 print(memoria.partitionList)
 
 #Aqui chamamos o best fit para cada processo:
-memoria.bf(1, "processo 1", 30) 
-memoria.bf(2, "processo 2", 25)
-memoria.bf(3, "Processo 3", 50)
+memoria.bf(1, "Processo 1", 30)
+memoria.bf(2, "Processo 2", 25)
+memoria.bf(3, "Processo 3", 16)
