@@ -26,6 +26,7 @@ class Memoria():
                 break
             
             if self.pagelist[counter].status == "Livre":
+                processo.alocation.append(self.pagelist[counter])
                 tamanho -= self.pagelist[counter].size
                 print(f"{processo.nome} ocupou a pagina {self.pagelist[counter].id}")
                 self.pagelist[counter].status = "Ocupado"
@@ -51,6 +52,7 @@ class Processo():
         self.nome = nome
         self.ID = ID
         self.processSize = processSize
+        self.alocation = []
 
 #Trecho de código onde eu crio meus processos automaticamente recebendo apenas a quantidade:
 def listaProcesso(quantidade):
@@ -70,6 +72,7 @@ lista = listaProcesso(4)
 #Adiciono cada processo da lista a minha memória virtual:
 for i in lista:
     memoria.add_processo(i)
+    print([x.id for x in i.alocation])
 
 #Aqui apenas printamos o status de cada pagina na minha memória virtual:
 for x in memoria.pagelist:
